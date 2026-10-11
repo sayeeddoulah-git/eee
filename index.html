@@ -64,8 +64,9 @@ const ICON = {
 };
 const ic = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
 
-const ALL_PAGES = [["home","Home"],["research","Research"],["publications","Publications"],["funding","Funding"],["teaching","Teaching"],["service","Service"],["students","Students"],["gallery","Gallery"]];
-const PAGES = ALL_PAGES.filter(p => p[0] !== "gallery" || (S.gallery && S.gallery.length));
+const ALL_PAGES = [["home","Home"],["research","Research"],["publications","Publications"],["funding","Funding"],["teaching","Teaching"],["training",(window.SITE.training&&window.SITE.training.menuLabel)||"Training"],["service","Service"],["students","Students"],["gallery","Gallery"]];
+const TR = S.training || {};
+const PAGES = ALL_PAGES.filter(p => (p[0] !== "gallery" || (S.gallery && S.gallery.length)) && (p[0] !== "training" || TR.enabled));
 
 function figure(im, cls){
   const alt = im.alt || im.caption || "";
@@ -87,6 +88,7 @@ home(){
   const sel = S.publications.filter(p=>p.selected).sort((a,b)=>b.year-a.year);
   return `<h1>Home</h1>
   <section><p class="lead">${esc(S.intro)}</p></section>
+  ${TR.enabled?`<section><div class="callout"><p><b>${esc(TR.title)}.</b> Free interactive training on OBE, Bloom's Taxonomy and Complex Engineering Problems for engineering faculty. <a href="#training">Open the training</a></p></div></section>`:""}
   <section><h2>Prospective students</h2><div class="callout"><p>${esc(S.students.prospective)} Write to <a href="mailto:${esc(L.email)}">${esc(L.email)}</a>.</p></div></section>
   <section><h2>Research interests</h2><p>${esc(S.statement.text)}</p>
    <ol class="list">${topics().map(t=>`<li><a href="#research/${esc(t.id)}">${esc(t.title)}</a></li>`).join("")}</ol></section>
@@ -128,7 +130,16 @@ teaching(){
   return `<h1>Teaching</h1><section><h2>Teaching philosophy</h2>${S.teachingPhilosophy.map(p=>`<p>${esc(p)}</p>`).join("")}</section>
   <section><h2>Courses and laboratories</h2><p class="meta">Taught at Southeast University, ULAB and MIST.</p>
    ${S.courses.map(c=>`<h3>${esc(c.area)}</h3><ul class="list">${c.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`).join("")}</section>
-  <section><h2>Workshops and seminars delivered</h2><ul class="list">${S.workshops.map(w=>`<li>${esc(w)}</li>`).join("")}</ul></section>`;
+  <section><h2>Workshops and seminars delivered</h2><ul class="list">${S.workshops.map(w=>`<li>${esc(w)}</li>`).join("")}</ul></section>
+  ${TR.enabled?`<section><h2>Self-paced training</h2><p>${esc(TR.title)}: <a href="#training">open the training page</a>.</p></section>`:""}`;
+},
+training(){
+  return `<h1>${esc(TR.title)}</h1>
+  <section><p class="lead">${esc(TR.intro)}</p>
+   <p><a class="btn" href="${esc(TR.file)}" ${newTab}>${esc(TR.buttonText||"Start the training")}</a></p></section>
+  <section><h2>What the training covers</h2>${(TR.modules||[]).map(m=>`<div class="proj"><h3>${esc(m.title)}</h3><p class="meta">${esc(m.lessons)}</p><p>${esc(m.topics)}</p></div>`).join("")}</section>
+  <section><h2>How it works</h2><ol class="list">${(TR.howItWorks||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
+   <p><a class="btn" href="${esc(TR.file)}" ${newTab}>${esc(TR.buttonText||"Start the training")}</a></p></section>`;
 },
 service(){
   return `<h1>Academic service</h1><section><p>${esc(S.serviceIntro)}</p></section>`

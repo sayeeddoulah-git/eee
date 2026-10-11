@@ -26,6 +26,9 @@
    - New funded project: copy an entry in "projects".
    - Pictures: upload the image file to the repository (same place as
      this file), then write its exact file name, e.g. "my-photo.jpg".
+   - Training tab: the training module file must be uploaded with the
+     file name given in "training" > "file" (obe-cep-training.html).
+     Set "enabled": false to hide the tab.
    - Gallery: add { "src": "photo-name.jpg", "caption": "..." } items to
      "gallery". The Gallery page appears once it has at least one item.
    - CV: upload the PDF next to this file, then set
@@ -51,7 +54,11 @@ window.SITE = {
   ],
   "photoAlt": "Portrait of Dr. Abul Barkat Mollah Sayeed Ud Doulah",
   "location": "Dhaka, Bangladesh",
-  "sidebarLines": ["Associate Professor, Department of EEE", "Additional Director, IQAC", "Southeast University"],
+  "sidebarLines": [
+    "Associate Professor, Department of EEE",
+    "Additional Director, IQAC",
+    "Southeast University"
+  ],
   "intro": "Dr. Abul Barkat Mollah Sayeed Ud Doulah is an Associate Professor of Electrical and Electronic Engineering at Southeast University, Dhaka, where he also serves as Additional Director of the Institutional Quality Assurance Cell. His research applies machine learning and biomedical signal processing to wearable and low-cost sensing systems, with a focus on healthcare in resource-constrained settings: dietary monitoring, maternal health, pediatric respiratory screening, and assistive technology for children with autism. He earned his Ph.D. in Electrical Engineering from the University of Alabama, where his dissertation developed a wearable sensor system for automatic food-intake detection. Across more than eleven years of university teaching in electronics, circuits, signal processing and control, he has also contributed to outcome-based curriculum design, quality assurance and engineering accreditation in Bangladesh.",
   "links": {
     "scholar": "https://scholar.google.com/citations?user=LerqP3wAAAAJ&hl=en",
@@ -729,5 +736,31 @@ window.SITE = {
       "venue": "Submitted to IET Communications"
     }
   ],
+  "training": {
+    "enabled": true,
+    "menuLabel": "Training",
+    "file": "obe-cep-training.html",
+    "title": "OBE and CEP self-paced training",
+    "intro": "A free, interactive, self-paced training on Outcome-Based Education (OBE) and BAETE's Complex Engineering Problem (CEP) framework, developed by Dr. Abul Barkat Mollah Sayeed Ud Doulah for faculty members of Electrical and Electronic Engineering, Computer Science and Engineering, and Textile Engineering.",
+    "modules": [
+      {
+        "title": "Module 1: Basic OBE and Bloom's Taxonomy",
+        "lessons": "14 lessons and a final assessment",
+        "topics": "What OBE is and how it differs from traditional teaching; vision, mission and PEOs; Program Outcomes; Bloom's Taxonomy; writing Course Outcomes with Bloom's verbs; aligning Bloom level and assessment; CO-PO mapping; assessment and attainment; Continuous Quality Improvement (CQI); evidence and documentation; common mistakes."
+      },
+      {
+        "title": "Module 2: Complex Engineering Problem",
+        "lessons": "9 lessons and a final assessment",
+        "topics": "Ordinary versus complex problems; the knowledge profile (WK1–WK9); complex problem characteristics (WP1–WP7); complex activity characteristics (EA1–EA5); engineering judgment, constraints, stakeholders, uncertainty and trade-offs; a department case study; deciding whether a problem is a CEP; developing evidence and documentation."
+      }
+    ],
+    "howItWorks": [
+      "Choose your department (EEE, CSE or Textile Engineering) to see examples from your own discipline.",
+      "Take the modules in any order. Within a module, the next lesson unlocks after you answer its knowledge check correctly.",
+      "Pass the final assessment to receive a printable certificate.",
+      "The training runs in your web browser with no login or installation. Chrome or Microsoft Edge is recommended."
+    ],
+    "buttonText": "Start the training"
+  },
   "gallery": []
 };

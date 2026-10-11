@@ -6,6 +6,7 @@ All files sit at the top level of the repository. There are no folders.
 | --- | --- |
 | `content.js` | All website text. **This is the file you edit.** |
 | `editor.html` | A form for adding or editing research topics with pictures. Open `https://YOUR-USERNAME.github.io/editor.html` |
+| `obe-cep-training.html` | The OBE and CEP training module (you add this file: rename the module's `index.html` to this name before uploading). |
 | `photo.jpg` | Profile photo. Replace it by uploading a new file with the same name. |
 | `index.html`, `style.css` | Layout and navy design. Only change these for design changes. |
 
